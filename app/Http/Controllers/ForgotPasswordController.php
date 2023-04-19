@@ -32,11 +32,7 @@ class ForgotPasswordController extends Controller
             ? redirect(route('recover.password.message'))
             : back()->withErrors(['email' => __($status)]);
     }
-
-    public function message(): View 
-    {
-        return view('auth.verify');
-    }
+    
     public function password(string $token, Request $request): View
     {
         return view('auth.verifyPassword.recover-password', ['token' => $token, 'email' => $request->get('email')]);

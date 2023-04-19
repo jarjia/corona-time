@@ -38,7 +38,7 @@ Route::group(['controller' => SessionsController::class], function () {
 Route::group(['controller' => ForgotPasswordController::class, 'middleware' => 'guest', 'prefix' => '/forgot-password'], function () {
     Route::get('/', 'email')->name('recover.email');
     Route::post('/', 'send')->name('recover.send');
-    Route::get('/recover/verify', 'message')->name('recover.password.message');
+    Route::view('/recover/verify', 'auth.verify')->name('recover.password.message');
     Route::get('/recover/{token}', 'password')->name('recover.password.create');
     Route::post('/reset-password', 'reset')->name('recover.password.reset');
 });
