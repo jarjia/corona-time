@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
@@ -55,4 +56,7 @@ Route::group([], function () {
 
 Route::view('/test', 'auth.mail.verify-notice');
 
-Route::view('/dashboard', 'dashboard.dashboard')->name('dashboard');
+Route::group(['controller' => DashboardController::class, 'middleware' => 'auth', 'prefix' => '/dashboard'], function() {
+    Route::get('/world-wide', 'index')->name('dashboard.index');
+    Route::get('/by-country', 'show')->name('dashboard.show');
+});
