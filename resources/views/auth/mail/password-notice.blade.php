@@ -6,13 +6,20 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%;
             height: 100vh;
         }
         .image-div {
             width: fit-content;
+            margin-top: 1rem;
+        }
+        .image-div img {
+            width: 100%;
+            height: 100%;
         }
         .info-div {
-            margin-top: 1rem;
+            margin: 1rem 0;
+            padding-bottom: 2rem;
             text-align: center;
         }
         h2 {
