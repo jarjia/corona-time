@@ -37,7 +37,7 @@ class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/dashboard');
+        return redirect(route('dashboard.index'));
     }
 
     public function destroy(): RedirectResponse
