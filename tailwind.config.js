@@ -7,11 +7,15 @@ module.exports = {
     "./resources/**/*.vue",
 ],
   theme: {
+    screens: {
+      'sm': {'max': '640px'}
+    },
     fontSize: {
       'primary-font': '16px',
     },
     gridTemplateColumns: {
-      '2': '1.1fr 0.9fr'
+      session: '1.1fr 0.9fr',
+      'one': '1fr'
     },
     borderColor: {
       'error': '#CC1E1E',
@@ -21,7 +25,6 @@ module.exports = {
       primary: '#2029F3',
       link: '#2029F3',
       gray: '#808189',
-      'black': '#010414',
       error: '#CC1E1E',
     },
     backgroundColor: {
