@@ -4,7 +4,7 @@
             <form method='GET' action='#'>
                 <div class="relative rounded-md">
                     <input type="email" name="email" id="email" 
-                        class="rounded-[8px] py-4 px-32 block sm:w-full outline-none sm:border-0 border-[1px] border-[#E6E6E7] pl-10 sm:text-sm sm:leading-5"
+                        class="rounded-[8px] py-4 px-32 block w-auto sm:w-full outline-none sm:border-0 border-[1px] border-[#E6E6E7] pl-10 sm:text-sm sm:leading-5"
                         placeholder="Search by country"
                         autocomplete='off'
                     >
