@@ -6,7 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
 @vite('resources/css/app.css')
+@vite('resources/js/app.js')
 
-<body style="font-family: 'Inter', sans-serif;" class='h-screen'>
+<body style="font-family: 'Inter', sans-serif;" class='tracking-wide h-screen'>
     {{$slot}}
 </body>

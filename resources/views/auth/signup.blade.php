@@ -1,9 +1,9 @@
 <x-layout-for-auth>
     <div class='mb-6'>
-        <h2 class='text-2xl mb-2 font-bold'>Welcome to Coronatime</h2>
-        <h3 class='text-lg tracking-wide text-gray'>Please enter required info to sign up</h3>
+        <h2 class='text-xl mb-2 font-bold sm:text-2xl'>Welcome to Coronatime</h2>
+        <h3 class='text-md tracking-wide text-gray sm:text-lg'>Please enter required info to sign up</h3>
     </div>
-    <form method='POST' action="{{route('signup.store')}}" class='pr-16 mb-2'>
+    <form method='POST' action="{{route('signup.store')}}" class='pr-16 sm:pr-2 mb-2'>
         @csrf
 
         <x-input :name="'name'" :type="'text'" :label="'Username'" placeholder='Enter unique username'/>
@@ -15,5 +15,7 @@
             SIGN UP
         </button>
     </form>
-    <small class='text-gray text-primary-font'>Already have an account? <a href="{{route('login.create')}}" class='text-black font-bold'>Log in</a></small>
+    <div class='text-left sm:text-center sm:py-2'>
+        <small class='text-gray text-primary-font sm:text-[14px]'>Already have an account? <a href="{{route('login.create')}}" class='text-black font-bold'>Log in</a></small>
+    </div>
 </x-layout-for-auth>
