@@ -5,8 +5,8 @@
                 @if (request('sort'))
                     <input type='hidden' name='sort' value="{{ request('sort') }}"/>
                 @endif
-                @if (request('type'))
-                    <input type='hidden' name='type' value="{{ request('type') }}"/>
+                @if (request('sort_type'))
+                    <input type='hidden' name='sort_type' value="{{ request('sort_type') }}"/>
                 @endif
                 <div class="relative w-[300px] sm:w-full rounded-md">
                     <input type="text" name="search" id="search" 
