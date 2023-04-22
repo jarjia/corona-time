@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('code');
             $table->foreign('code')->references('code')->on('country_codes');
             $table->string('country');
+            $table->json('name');
             $table->integer('new_cases');
             $table->integer('recovered');
             $table->integer('deaths');
