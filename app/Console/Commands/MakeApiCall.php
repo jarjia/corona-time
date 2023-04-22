@@ -33,15 +33,6 @@ class MakeApiCall extends Command
         $countries = $getresponse->json();
 
         foreach ($countries as $country) {
-            CountryCodes::updateOrCreate(
-                ['code' => $country['code']],
-                [
-                    'name' => [
-                        'en' => $country['name']['en'],
-                        'ka' => $country['name']['ka'],
-                    ],
-                ]
-            );
             $postResponse = Http::post('https://devtest.ge/get-country-statistics', [
                 'code' => $country['code']
             ])->json();
@@ -52,7 +43,11 @@ class MakeApiCall extends Command
                     'country' => $postResponse['country'],
                     'new_cases' => $postResponse['confirmed'],
                     'recovered' => $postResponse['recovered'],
-                    'deaths' => $postResponse['deaths']
+                    'deaths' => $postResponse['deaths'],
+                    'name' => [
+                        'en' => $country['name']['en'],
+                        'ka' => $country['name']['ka'],
+                    ],
                 ]
             );
         }

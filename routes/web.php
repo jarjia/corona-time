@@ -3,8 +3,10 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Models\CountryCodes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,3 +62,5 @@ Route::group(['controller' => DashboardController::class, 'middleware' => 'auth'
     Route::get('/world-wide', 'index')->name('dashboard.index');
     Route::get('/by-country', 'show')->name('dashboard.show');
 });
+
+Route::get('/lang/{locale}', [LanguageController::class, 'setLocale'])->name('lang');
