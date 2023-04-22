@@ -28,7 +28,7 @@
                     <tr class="flex w-full">
                         <th class="p-4 sm:p-1 w-1/4 flex sm:text-[10px] items-center sm:gap-0 gap-2">
                             {{__('dashboard.location')}}
-                            <a href="{{route('dashboard.sortby.location', ['sort' => 'name', 'search' => request('search')])}}" class='py-1 px-1'>
+                            <a href="{{route('dashboard.show', ['sort' => 'name', 'sort_type' => $count, 'search' => request('search')])}}" class='py-1 px-1'>
                                 @if ($sort_name === 'name' && $sort_type === 'desc')
                                     <img src="{{asset('images/arrows/down-colored.png')}}" class='mb-[4px] sm:w-[8px] rotate-180'/>
                                     <img src="{{asset('images/arrows/down-arrow.png')}}" class='sm:w-[8px]'/>
@@ -40,7 +40,7 @@
                         </th>
                         <th class="p-4 sm:p-1 w-1/4 flex sm:text-[10px] items-center sm:gap-0 gap-2">
                             <span>{{__('dashboard.new_cases')}}</span>
-                            <a href="{{route('dashboard.sortby.new_cases', ['sort' => 'new_cases', 'search' => request('search')])}}" class='py-1 px-1'>
+                            <a href="{{route('dashboard.show', ['sort' => 'new_cases', 'sort_type' => $count, 'search' => request('search')])}}" class='py-1 px-1'>
                                 @if ($sort_name === 'new_cases' && $sort_type === 'desc')
                                     <img src="{{asset('images/arrows/down-colored.png')}}" class='mb-[4px] min-w-[8px] sm:w-[8px] rotate-180'/>
                                     <img src="{{asset('images/arrows/down-arrow.png')}}" class='sm:w-[8px] min-w-[8px]'/>
@@ -55,7 +55,7 @@
                         </th>
                         <th class="p-4 sm:p-1 w-1/4 flex sm:text-[10px] items-center sm:gap-0 gap-2">
                             {{__('dashboard.deaths')}}
-                            <a href="{{route('dashboard.sortby.deaths', ['sort' => 'deaths', 'search' => request('search')])}}" class='py-1 px-1'>
+                            <a href="{{route('dashboard.show', ['sort' => 'deaths', 'sort_type' => $count, 'search' => request('search')])}}" class='py-1 px-1'>
                                 @if ($sort_name === 'deaths' && $sort_type === 'desc')
                                     <img src="{{asset('images/arrows/down-colored.png')}}" class='mb-[4px] sm:w-[8px] rotate-180'/>
                                     <img src="{{asset('images/arrows/down-arrow.png')}}" class='sm:w-[8px]'/>
@@ -70,7 +70,7 @@
                         </th>
                         <th class="p-4 sm:p-1 w-1/4 flex sm:text-[10px] items-center sm:gap-0 gap-2">
                             <span class='truncate'>{{__('dashboard.recovered')}}</span>
-                            <a href="{{route('dashboard.sortby.recovered', ['sort' => 'recovered', 'search' => request('search')])}}" class='py-1 px-1'>
+                            <a href="{{route('dashboard.show', ['sort' => 'recovered', 'sort_type' => $count, 'search' => request('search')])}}" class='py-1 px-1'>
                                 @if ($sort_name === 'recovered' && $sort_type === 'desc')
                                     <img src="{{asset('images/arrows/down-colored.png')}}" class='mb-[4px] sm:w-[8px] rotate-180'/>
                                     <img src="{{asset('images/arrows/down-arrow.png')}}" class='sm:w-[8px]'/>
@@ -94,7 +94,7 @@
                     </tr>
                     @foreach ($countries as $country)
                         <tr class="flex w-full mb-4">
-                            <td class="p-3 sm:p-1 w-1/4 text-black">{{$country->countryCodes->name}}</td>
+                            <td class="p-3 sm:p-1 w-1/4 text-black">{{$country->name}}</td>
                             <td class="p-3 sm:p-1 w-1/4 text-black">{!! $country->new_cases < 1 ? '<strong>-</strong>' : $country->new_cases !!}</td>
                             <td class="p-3 sm:p-1 w-1/4 text-black">{!! $country->deaths < 1 ? '<strong>-</strong>' : $country->deaths !!}</td>
                             <td class="p-3 sm:p-1 w-1/4 text-black">{!! $country->recovered < 1 ? '<strong>-</strong>' : $country->recovered !!}</td>

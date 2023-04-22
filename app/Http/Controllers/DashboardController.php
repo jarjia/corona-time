@@ -27,22 +27,35 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function show(Request $request)
+    public function show(Request $request, UrlGenerator $url)
     {    
-        $currentSortName = $request->query('sort');   
-        $currentSortType = $request->query('type');
-        $joinedData = CountryStatistics::join('country_codes', 'country_statistics.code', '=', 'country_codes.code');
+        $data = CountryStatistics::query();
+        $currentSortName = $request->query('sort');
+        $currentSortCount = $request->query('sort_type');
+        $urlParts = parse_url($url->previous());
+        $queryParameters = [];
+        if (array_key_exists('query', $urlParts)) {
+            parse_str($urlParts['query'], $queryParameters);
+        }
+        $previousSortName = $queryParameters['sort'] ?? null;
+        $newCount = $currentSortName === $previousSortName ? $currentSortCount += 1 : 0;
 
-        if($currentSortName === 'name') {
-            $countries = $joinedData->orderByRaw("country_codes.name->'$.".app()->getLocale()."' ".$currentSortType)->get();
-        }else if($currentSortName === null) {
-            $countries = $joinedData->get();
+        if($newCount % 2 === 0 || $newCount === 0) {
+            $sortType = 'desc';
         }else {
-            $countries = $joinedData->orderBy($currentSortName, $currentSortType)->get();
+            $sortType = 'asc';
+        }
+
+        if ($currentSortName === 'name') {
+            $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".$sortType)->get();
+        } elseif ($currentSortName === null) {
+            $countries = $data->get();
+        } else {
+            $countries = $data->orderBy($currentSortName, $sortType)->get();
         }
 
         $filteredCountries = $countries->filter(function($country) use ($request) {
-            return strpos(strtolower($country->countryCodes->name), strtolower($request->query('search'))) !== false;
+            return strpos(strtolower($country->name), strtolower($request->query('search'))) !== false;
         });
 
         $newcases = 0;
@@ -58,25 +71,11 @@ class DashboardController extends Controller
         return view('dashboard.dashboard-by-country', [
             'countries' => $filteredCountries,
             'sort_name' => $currentSortName,
-            'sort_type' => $currentSortType,
+            'sort_type' => $sortType,
+            'count' => $newCount,
             'new_cases' => $newcases,
             'recovered' => $recovered,
             'deaths' => $deaths
         ]);
-    }
-
-    public function sorting(Request $request, UrlGenerator $url)
-    {
-        $sort = $request->query('sort');
-        $previousSortType = strpos($url->previous(), $sort) !== false 
-        && strpos($url->previous(), 'asc') === false ? 'asc' : 'desc';
-        
-        $params = ['sort' => $sort, 'type' => $previousSortType];
-
-        if ($request->has('search')) {
-            $params['search'] = $request->query('search');
-        }
-
-        return redirect()->route('dashboard.show', $params);
     }
 }
