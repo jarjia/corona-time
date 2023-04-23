@@ -56,7 +56,7 @@
     <section class='container'>
         <div>
             <div class='image-div'>
-                <img src="{{ $message->embed(public_path('/images/emailVerify.png')) }}" alt='corona time table'/>
+                <img src="{{ $message->embed(public_path('/images/email-verify.png')) }}" alt='corona time table'/>
             </div>
             <div class='info-div'>
                 <h2>Recover password</h2>
