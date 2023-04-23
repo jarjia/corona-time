@@ -3,7 +3,7 @@
         <h2 class='text-xl mb-2 font-bold sm:text-2xl'>{{__('forms.welcome_to_corona_time')}}</h2>
         <h3 class='text-md tracking-wide text-gray sm:text-lg'>{{__('forms.register_desc')}}</h3>
     </div>
-    <form method='POST' action="{{route('signup.store')}}" class='pr-16 sm:pr-2 mb-2'>
+    <form method='POST' action="{{route('signup.store')}}" class='pr-20 sm:pr-2 mb-2'>
         @csrf
 
         <x-input :name="'name'" :type="'text'" :label="__('inputs.username')" :placeholder="__('inputs.username_placeholder')"/>

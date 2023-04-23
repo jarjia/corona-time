@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/signup');
-});
+Route::redirect('/', '/signup');
 
 Route::group(['controller' => RegisterController::class], function () {
     Route::get('/signup', 'create')->name('signup.create');

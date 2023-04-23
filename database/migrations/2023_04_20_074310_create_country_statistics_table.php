@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('country_statistics', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->foreign('code')->references('code')->on('country_codes');
             $table->string('country');
             $table->json('name');
             $table->integer('new_cases');
