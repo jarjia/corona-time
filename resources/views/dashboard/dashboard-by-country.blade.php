@@ -11,7 +11,7 @@
                 <div class="relative w-[300px] sm:w-full rounded-md">
                     <input type="text" name="search" id="search" 
                         class="form-input rounded-[8px] py-4 block w-full sm:w-full focus:ring-0 sm:border-0 border-[1px] border-[#E6E6E7] pl-10 focus:outline-none"
-                        placeholder="Search by country"
+                        placeholder="{{__('inputs.search')}}"
                         value="{{request('search')}}"
                         autocomplete='off'
                         style="outline:none;"

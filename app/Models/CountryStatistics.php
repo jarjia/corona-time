@@ -10,14 +10,33 @@ class CountryStatistics extends Model
 {
     use HasFactory, HasTranslations;
 
+
+	/**
+	 * The attributes that are not mass assignable.
+	 *
+	 * @var array
+	*/
     protected $guarded = [];
 
+    /**
+	 * The attributes that are translatable.
+	 *
+	 * @var array
+     */
     public $translatable = ['name'];
 
+    /**
+	 * The attributes that are casted as array.
+	 *
+	 * @var array
+	 */
     protected $casts = [
         'name' => 'array'
     ];
 
+    /**
+	 * Function for search filtering.
+	*/
     public function scopeFilter($query, array $filters)
     {
         $locale = app()->getLocale();

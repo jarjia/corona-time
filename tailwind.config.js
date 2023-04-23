@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -35,6 +37,23 @@ module.exports = {
     require("@tailwindcss/forms")({
       strategy: 'base',
     }),
+    plugin(({ addBase, theme }) => {
+      addBase({
+          '.scrollbar': {
+              overflowY: 'auto',
+              scrollbarColor: `#808189 transparent`,
+              scrollbarWidth: 'thin',
+          },
+          '.scrollbar::-webkit-scrollbar': {
+              height: '4px',
+              width: '6px',
+          },
+          '.scrollbar::-webkit-scrollbar-thumb': {
+              backgroundColor: '#808189',
+              borderRadius: '50px'
+          },
+      });
+  }),
   ],
 }
 

@@ -1,25 +1,28 @@
 <!doctype html>
 <head>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             width: 100%;
             height: 100vh;
+        }
+        .container div {
+            padding-top: 20px; 
         }
         .image-div {
             width: fit-content;
             margin-top: 1rem;
+            margin: auto;
+            padding: 8px;
         }
         .image-div img {
             width: 100%;
             height: 100%;
         }
         .info-div {
-            margin: 1rem 0;
-            padding-bottom: 2rem;
             text-align: center;
         }
         h2 {
@@ -32,11 +35,10 @@
         h4 {
             font-size: 16px;
             color: black;
-            margin-bottom: 0.5rem;
             font-family: sans-serif;
         }
         .link-div {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         a {
             padding: 1rem 6rem;
@@ -46,22 +48,24 @@
             border: none;
             font-family: sans-serif;
             cursor: pointer;
-            color: white;
+            color: white !important;
             text-decoration: none;
         }
     </style>
 </head>
     <section class='container'>
-        <div class='image-div'>
-            <img src="{{ $message->embed(public_path('/images/emailVerify.png')) }}" alt='corona time table'/>
-        </div>
-        <div class='info-div'>
-            <h2>Recover password</h2>
-            <h4>click this button to recover a password</h4>
-            <div class='link-div'> 
-                <a href="{{$verifyUrl}}" id='verify-link' target="_self">       
-                    VERIFY EMAIL
-                </a>
+        <div>
+            <div class='image-div'>
+                <img src="{{ $message->embed(public_path('/images/email-verify.png')) }}" alt='corona time table'/>
+            </div>
+            <div class='info-div'>
+                <h2>Recover password</h2>
+                <h4>click this button to recover a password</h4>
+                <div class='link-div'> 
+                    <a href="{{$verifyUrl}}" id='verify-link' target="_self">       
+                        RECOVER PASSWORD
+                    </a>
+                </div>
             </div>
         </div>
     </section>

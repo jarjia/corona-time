@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-use App\Models\CountryCodes;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/signup');
-});
+Route::redirect('/', '/signup');
 
 Route::group(['controller' => RegisterController::class], function () {
     Route::get('/signup', 'create')->name('signup.create');
@@ -48,11 +43,11 @@ Route::group(['controller' => ForgotPasswordController::class, 'middleware' => '
 
 Route::group([], function () {
     Route::view('email-verified', 'auth.verified', 
-        ['message' => 'Your account is confirmed, you can sign in', 'redirect' => 'logout.destroy']
+        ['message' => 'messages.confirm_acc', 'redirect' => 'logout.destroy']
     )->middleware(['auth', 'verified'])->name('email.verified');
 
     Route::view('recover-verified', 'auth.verified', 
-        ['message' => 'Your password has been updated successfully', 'redirect' => 'login.create']
+        ['message' => 'messages.updated_pass', 'redirect' => 'login.create']
     )->middleware('guest')->name('recover.verified');
 });
 
