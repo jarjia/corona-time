@@ -7,7 +7,6 @@ use App\Http\Requests\verifications\EmailVerifyRequest;
 use App\Mail\VerificationEmail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\CountryStatistics;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $cases = CountryStatistics::all();
         $newcases = 0;
@@ -27,7 +28,7 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function show(Request $request, UrlGenerator $url)
+    public function show(Request $request, UrlGenerator $url): View
     {    
         $data = CountryStatistics::query();
         $currentSortName = $request->query('sort');
