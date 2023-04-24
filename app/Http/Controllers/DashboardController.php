@@ -6,6 +6,7 @@ use App\Models\CountryStatistics;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -47,10 +48,9 @@ class DashboardController extends Controller
             $sortType = 'asc';
         }
 
-        if ($currentSortName === 'name') {
-            $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".$sortType)->get();
-        } elseif ($currentSortName === null) {
-            $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".'asc')->get();
+        if($currentSortName === null || $currentSortName === 'name') {
+            $sortField = "IFNULL(name->'$.".app()->getLocale()."', name)";
+            $countries = $data->orderByRaw("$sortField $sortType")->get();
         } else {
             $countries = $data->orderBy($currentSortName, $sortType)->get();
         }
