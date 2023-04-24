@@ -50,7 +50,7 @@ class DashboardController extends Controller
         if ($currentSortName === 'name') {
             $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".$sortType)->get();
         } elseif ($currentSortName === null) {
-            $countries = $data->get();
+            $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".'asc')->get();
         } else {
             $countries = $data->orderBy($currentSortName, $sortType)->get();
         }

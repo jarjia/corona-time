@@ -15,7 +15,7 @@
             {{__('forms.sign_up')}}
         </button>
     </form>
-    <div class='text-left sm:text-center sm:py-2'>
+    <div class='text-center sm:text-center sm:py-2 pr-16'>
         <small class='text-gray text-primary-font sm:text-[14px]'>{{__('forms.have_acc')}} <a href="{{route('login.create')}}" class='text-black font-bold'>{{__('forms.log_in_link')}}</a></small>
     </div>
 </x-layout-for-auth>
