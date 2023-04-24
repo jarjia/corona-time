@@ -19,7 +19,6 @@ class Language
 	{
 		if (session('my_locale') === null)
 		{
-			dd(session('my_locale'));
 			App::setLocale(config('app.locale'));
 		}
 		elseif (session('my_locale') !== null)
