@@ -49,8 +49,11 @@ class DashboardController extends Controller
         }
 
         if($currentSortName === null || $currentSortName === 'name') {
-            $sortField = "IFNULL(name->'$.".app()->getLocale()."', name)";
-            $countries = $data->orderByRaw("$sortField $sortType")->get();
+            if(DB::getDefaultConnection() === 'mysql') {
+                $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".$sortType)->get();
+            }else {
+                $countries = $data->orderByRaw("json_extract(name, '$." . app()->getLocale() . "') $sortType")->get();
+            }
         } else {
             $countries = $data->orderBy($currentSortName, $sortType)->get();
         }
