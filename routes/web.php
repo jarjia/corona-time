@@ -51,8 +51,6 @@ Route::group([], function () {
     )->middleware('guest')->name('recover.verified');
 });
 
-Route::view('/test', 'auth.mail.verify-notice');
-
 Route::group(['controller' => DashboardController::class, 'middleware' => 'auth', 'prefix' => '/dashboard'], function() {
     Route::get('/world-wide', 'index')->name('dashboard.index');
     Route::get('/by-country', 'show')->name('dashboard.show');
