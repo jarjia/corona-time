@@ -46,9 +46,9 @@ class VerificationEmail extends Mailable
     {
         return $this->view('auth.mail.verify-notice')->with([
             'verifyUrl' => $this->verificationUrl(),
-        ])->attach(public_path('/images/emailVerify.png'), [
-            'as' => 'emailVerify.png',
-            'mime' => 'emailVerify/png',
+        ])->attach(public_path('/images/email-verify.png'), [
+            'as' => 'email-verify.png',
+            'mime' => 'email-verify/png',
         ]);
     }
 
