@@ -23,7 +23,7 @@ Route::redirect('/', '/signup');
 Route::group(['controller' => RegisterController::class], function () {
     Route::get('/signup', 'create')->name('signup.create');
     Route::post('/signup', 'store')->name('signup.store');
-    Route::get('/signup/verify', 'verify')->middleware('auth')->name('signup.verify');
+    Route::get('/email/verify/{id}/{hash}', 'verify')->middleware(['auth', 'signed'])->name('verification.verify');
     Route::get('/email/verify', 'verifying')->middleware('auth')->name('verification.notice');
 });
 
