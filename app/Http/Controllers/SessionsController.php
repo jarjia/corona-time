@@ -30,8 +30,7 @@ class SessionsController extends Controller
 
         if (!Auth::attempt($attributes, $rememberToken)) {
             throw ValidationException::withMessages([
-                'username_or_email' => 'username or email not found',
-                'password' => 'password does not match'
+                'username_or_email' => __('formErrors.username_or_email')
             ]);
         }
 
