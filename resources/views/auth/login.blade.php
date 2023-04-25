@@ -1,7 +1,7 @@
 <x-layout-for-auth>
     <div class='mb-6'>
         <h2 class='text-xl mb-2 font-bold sm:text-2xl'>{{__('forms.welcome_back')}}</h2>
-        <h3 class='text-md tracking-wide text-gray sm:text-lg'>{{__('forms.welcome_to_corona_time')}}</h3>
+        <h3 class='text-md tracking-wide text-gray sm:text-lg'>{{__('forms.login_desc')}}</h3>
     </div>
         <form method='POST' action="{{route('login.store')}}" class='pr-20 sm:pr-2 mb-2'>
         @csrf
