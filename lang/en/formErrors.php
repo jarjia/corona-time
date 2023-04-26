@@ -1,9 +1,6 @@
 <?php
 
 return [
-
-    'username_or_email' => 'Username or email not found.',
-    'password' => 'Password did not match.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'username_or_email' => 'User with that username or email does not exist',
+    'password' => 'Password did not match',
 ];

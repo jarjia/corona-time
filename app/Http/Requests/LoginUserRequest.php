@@ -15,13 +15,7 @@ class LoginUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username_or_email' => ['required', function ($attribute, $value, $fail) {
-                $user = User::where('name', $value)->orWhere('email', $value)->first();
-
-                if (!$user) {
-                    return $fail('User with that username or email does not exist');
-                }
-            },],
+            'username_or_email' => 'required|min:3',
 			'password' => 'required',
         ];
     }
