@@ -7,7 +7,7 @@ return [
     'register_desc' => 'Please enter required info to sign up',
     'login_desc' => 'Welcome back! Please enter your details',
     'forgot_password' => 'Forgot password?',
-    'log_in' => 'SIGN IN',
+    'log_in' => 'LOG IN',
     'sign_up' => 'SIGN UP',
     'log_in_link' => 'Log In',
     'log_in_small' => 'Sign In',
