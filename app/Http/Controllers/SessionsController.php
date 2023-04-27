@@ -10,11 +10,6 @@ use Illuminate\View\View;
 
 class SessionsController extends Controller
 {
-    public function create(): View
-    {
-        return view('auth.login');
-    }
-
     public function store(LoginUserRequest $request): RedirectResponse
     {
         $attributes = $request->only('password');

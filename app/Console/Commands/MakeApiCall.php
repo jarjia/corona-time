@@ -44,7 +44,7 @@ class MakeApiCall extends Command
                     'recovered' => $postResponse['recovered'],
                     'deaths' => $postResponse['deaths'],
                     'name' => [
-                        'en' => $country['name']['en'],
+                        'en' => strtolower($country['name']['en']),
                         'ka' => $country['name']['ka'],
                     ],
                 ]

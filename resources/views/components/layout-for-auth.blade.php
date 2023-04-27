@@ -1,15 +1,18 @@
 <x-layout>
-    <section class='grid grid-cols-session sm:flex sm:w-full sm:gap-2 gap-10 w-full h-full'>
-            <section class='pl-20 pr-16 py-8 sm:px-4 sm:w-full sm:py-4'>
-                <div class='mb-8'>
-                    <img src='/images/Group 1.png' alt='app logo'/>
+    <section class='grid grid-cols-session sm:flex sm:w-full sm:gap-2 w-full h-full'>
+            <section class='pl-20 pr-16 py-4 sm:px-4 sm:w-full sm:py-2'>
+                <div class='mb-6 flex items-center justify-between'>
+                    <div>
+                        <img src='/images/group-1.png' alt='app logo'/>
+                    </div>
+                    <x-drop-down />
                 </div>
                 <div class='w-full sm:w-full'>
                     {{$slot}}
                 </div>
             </section>
-            <section class='h-full block sm:hidden w-auto'>
-                <img src='/images/Rectangle 1.png' class='h-full w-full' alt='background'/>
+            <section class='h-full max-h-[900px] block sm:hidden w-auto'>
+                <img src='/images/rectangle-1.png' class='h-full max-h-full w-full' alt='background'/>
             </section>
     </section>
 </x-layout>

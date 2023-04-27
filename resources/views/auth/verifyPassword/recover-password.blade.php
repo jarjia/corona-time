@@ -3,7 +3,7 @@
         <div class='mb-8 sm:mb-4 text-center relative sm:bottom-[50px]'>
             <h2 class='text-2xl mb-2 font-bold'>{{__('forms.reser_password')}}</h2>
         </div>
-        <form method='POST' action="{{route('recover.password.reset')}}" class='block sm:flex sm:flex-col sm:justify-between sm:h-full'>
+        <form method='POST' action="{{route('recover.password.reset')}}" class='block sm:flex sm:flex-col sm:justify-between sm:h-full' novalidate>
         @csrf
 
         <div class='relative sm:bottom-[50px]'>

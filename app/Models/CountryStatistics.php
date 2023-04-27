@@ -37,14 +37,27 @@ class CountryStatistics extends Model
     /**
 	 * Function for search filtering.
 	*/
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter($query, array $filters, $request)
     {
-        $locale = app()->getLocale();
+        $search = $request->query('search');
+		$sort = $request->query('column');
+        $type = $request->query('direction');
         
-        $query->when($filters['search'] ?? false, function ($query, $search) use ($locale) {
-            return $query->where(fn($query) => 
-                $query->where("name->{$locale}", 'like', '%' . $search . '%')
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where(fn($query) =>
+                $query->where("name->en", 'LIKE', "%".strtolower($search)."%")
+                ->orWhere("name->ka", 'LIKE', "%".strtolower($search)."%")
             );
-        });
+		});
+
+        if ($sort) {
+            if($sort === 'name') {
+                $query->orderBy($sort.'->'.app()->getLocale(), $type);
+            }else {
+                $query->orderBy($sort, $type);
+            }
+		}
+
+        return $query;
     }
 }

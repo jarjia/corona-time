@@ -1,26 +1,10 @@
 <x-layout>
     <nav class='flex justify-between items-center border-b-[1px] border-b-[#F6F6F7] py-4 px-20 sm:px-4'>
             <div>
-                <img src='/images/Group 1.png' class='sm:w-[137px]'/>
+                <img src='/images/group-1.png' class='sm:w-[137px]'/>
             </div>
             <div class='flex gap-12'>
-                <div>
-                    <div x-data="{ show: false }" @click.away="show = false">
-                        <button class='flex' @click="show = !show">
-                            {{app()->currentLocale() === 'en' ? __('dashboard.english') : __('dashboard.georgian')}}
-                            <img src="{{asset('images/down-small.png')}}"/>
-                        </button>
-
-                        <div class='absolute p-2 rounded-[8px] bg-[#F6F6F7] mt-2' style='display: none;' x-show="show">
-                            <a href="{{route('lang', ['locale' => 'en'])}}" class="block mt-[10px] {{app()->currentLocale() === 'en' ? 'underline' : ''}}">
-                                {{__('dashboard.english')}}
-                            </a>
-                            <a href="{{route('lang', ['locale' => 'ka'])}}" class="block mb-[2px] mt-[10px] {{app()->currentLocale() === 'ka' ? 'underline' : ''}}">
-                                {{__('dashboard.georgian')}}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <x-drop-down />
                 <div>
                     <div class='flex gap-4 sm:hidden'>
                         <div>

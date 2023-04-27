@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
 use Illuminate\Http\Request;
-use Illuminate\Routing\UrlGenerator;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 
@@ -29,54 +28,25 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function show(Request $request, UrlGenerator $url): View
+    public function show(Request $request): View
     {    
-        $data = CountryStatistics::query();
-        $currentSortName = $request->query('sort');
-        $currentSortCount = $request->query('sort_type');
-        $urlParts = parse_url($url->previous());
-        $queryParameters = [];
-        if (array_key_exists('query', $urlParts)) {
-            parse_str($urlParts['query'], $queryParameters);
-        }
-        $previousSortName = $queryParameters['sort'] ?? null;
-        $newCount = $currentSortName === $previousSortName ? $currentSortCount += 1 : 0;
-
-        if($newCount % 2 === 0 || $newCount === 0) {
-            $sortType = 'desc';
-        }else {
-            $sortType = 'asc';
-        }
-
-        if($currentSortName === null || $currentSortName === 'name') {
-            if(DB::getDefaultConnection() === 'mysql') {
-                $countries = $data->orderByRaw("name->'$.".app()->getLocale()."' ".$sortType)->get();
-            }else {
-                $countries = $data->orderByRaw("json_extract(name, '$." . app()->getLocale() . "') $sortType")->get();
-            }
-        } else {
-            $countries = $data->orderBy($currentSortName, $sortType)->get();
-        }
-
-        $filteredCountries = $countries->filter(function($country) use ($request) {
-            return strpos(strtolower($country->name), strtolower($request->query('search'))) !== false;
-        });
+        $allCountries = CountryStatistics::all();
+        $countries = CountryStatistics::filter(
+            ['search' => request('search'), 'column' => request('column'), 'direction' => request('direction')], request())
+        ->get();
 
         $newcases = 0;
         $recovered = 0;
         $deaths = 0;
        
-        foreach($countries as $country) {
+        foreach($allCountries as $country) {
             $newcases += $country->new_cases;
             $recovered += $country->recovered;
             $deaths += $country->deaths;
         }
 
         return view('dashboard.dashboard-by-country', [
-            'countries' => $filteredCountries,
-            'sort_name' => $currentSortName,
-            'sort_type' => $sortType,
-            'count' => $newCount,
+            'countries' => $countries,
             'new_cases' => $newcases,
             'recovered' => $recovered,
             'deaths' => $deaths
