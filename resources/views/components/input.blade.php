@@ -15,9 +15,11 @@
         <img src='/images/vector.png' class='w-[20px] h-[20px] float-right relative bottom-9 right-4' alt='success icon'/>
     @endif
     @error("$name")
+    @if ($message != "password does not match to password.")
         <div class='flex absolute gap-2 mt-2'>
             <img src='/images/vector-(9).png' class='w-[20px] h-[20px]' alt='error icon'/>
             <div class='text-error text-sm'>{{ $message }}</div>
         </div>
+    @endif
     @enderror
 </div>
