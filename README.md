@@ -1,10 +1,10 @@
 <div style="display:flex; align-items: center">
-  <h1 style="position:relative; top: -6px" >Movie Quotes</h1>
+  <h1 style="position:relative; top: -6px" >Cororna Time</h1>
 </div>
 
 ---
-Movie quotes lets you log in to application as an admin and add movies and quotes.
-The quotes will be connected to movies and you will see one random movie with one random quote on the home page.
+In Corona time you can register and verify your account also if you forgot password you can recoer it.
+Corona time shows you data of all countries new cases, deaths and recovereds and it updates its data every 24 hours.
 
 #
 ### Table of Contents
