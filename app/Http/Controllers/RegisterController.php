@@ -11,11 +11,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class RegisterController extends Controller
 {
-    public function create(): View
-    {
-        return view('auth.signup');
-    }
-
     public function store(StoreUserRequest $request): RedirectResponse
     {
         $attributes = $request->validated();

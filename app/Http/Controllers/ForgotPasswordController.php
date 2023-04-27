@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\verifications\EmailPasswordRequest;
-use App\Http\Requests\verifications\PasswordResetRequest;
+use App\Http\Requests\Verifications\EmailPasswordRequest;
+use App\Http\Requests\Verifications\PasswordResetRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,11 +15,6 @@ use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
-    public function email(): View 
-    {
-        return view('auth.verifyPassword.email-confirm');
-    }
-
     public function send(EmailPasswordRequest $request): RedirectResponse
     {
         $request->validated();

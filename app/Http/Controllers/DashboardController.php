@@ -30,6 +30,7 @@ class DashboardController extends Controller
 
     public function show(Request $request): View
     {    
+        $allCountries = CountryStatistics::all();
         $countries = CountryStatistics::filter(
             ['search' => request('search'), 'column' => request('column'), 'direction' => request('direction')], request())
         ->get();
@@ -38,7 +39,7 @@ class DashboardController extends Controller
         $recovered = 0;
         $deaths = 0;
        
-        foreach($countries as $country) {
+        foreach($allCountries as $country) {
             $newcases += $country->new_cases;
             $recovered += $country->recovered;
             $deaths += $country->deaths;
