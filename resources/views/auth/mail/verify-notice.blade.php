@@ -69,9 +69,3 @@
             </div>
         </div>
     </section>
-<script>
-    document.getElementById('verify-link').addEventListener('click', function(event) {
-        event.preventDefault();
-        window.location.href = this.getAttribute('href');
-    });
-</script>
