@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\verifications;
+namespace App\Http\Requests\Verifications;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmailPasswordRequest extends FormRequest
+class PasswordResetRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,9 @@ class EmailPasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email'
+            'token' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed|min:3',
         ];
     }
 }
