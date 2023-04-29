@@ -20,7 +20,6 @@
             <directory>./app/Exceptions</directory>
             <directory>./app/Providers</directory>
             <directory>./app/Console</directory>
-            <directory>./app/Http/Requests</directory>
             <file>./app/Http/Controllers/Controller.php</file>
             <file>./app/Http/Middleware/EncryptCookies.php</file>
             <file>./app/Http/Middleware/PreventRequestsDuringMaintenance.php</file>
@@ -30,10 +29,10 @@
             <file>./app/Http/Middleware/TrustHosts.php</file>
             <file>./app/Http/Middleware/TrustProxies.php</file>
             <file>./app/Http/Kernel.php</file>
-            <file>./app/Notifications/ResetPasswordNotification.php</file>
         </exclude>
     </coverage>
     <php>
+        <ini name="xdebug.coverage_enable" value="1" />
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
