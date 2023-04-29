@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Notifications\ResetPasswordNotification;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Password;
@@ -13,6 +14,14 @@ use Tests\TestCase;
 class ForgotPasswordTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+    }
 
     public function test_forgot_password_page_is_accessible()
     {
@@ -135,4 +144,41 @@ class ForgotPasswordTest extends TestCase
 
         $response->assertRedirect('/recover-verified');
     }    
+
+    public function test_forgot_password_notification_content_is_correct() 
+    {
+        Notification::fake(); 
+        $token = 'my_token'; 
+
+        $this->user->notify(new ResetPasswordNotification($token));
+
+        Notification::assertSentTo($this->user, ResetPasswordNotification::class, function ($notification, $channels) use($token) {
+            $this->assertContains('mail', $channels);
+            $mailNotification = (object)$notification->toMail($this->user);
+
+            $this->assertEquals($token, $notification->token);
+            $userEmail = str_replace('@', '%40', $this->user->email);
+
+            $this->assertEquals('Password Reset Notification', $mailNotification->subject);
+            $this->assertEquals('Notification Action', $mailNotification->actionText);
+            $this->assertEquals($mailNotification->actionUrl, route('recover.password.create', ['token' => 'my_token'])."?email=".$userEmail);
+            
+            $attachment = $mailNotification->attachments[0];
+            $this->assertEquals('email-verify.png', $attachment['options']['as']);
+            $this->assertEquals('email-verify/png', $attachment['options']['mime']);
+
+            return true;
+        });
+    }
+
+    public function test_forgot_password_toArray_returns_an_array_of_notification_data()
+    {
+        $token = 'my_token';
+        $notification = new ResetPasswordNotification($token);
+
+        $data = $notification->toArray($this->user);
+        $this->assertIsArray($data);
+        $this->assertArrayHasKey('token', $data);
+        $this->assertEquals($token, $data['token']);
+    }
 }
