@@ -134,7 +134,7 @@ return [
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute field must match :other.',
+    'same' => ':attribute ველი უნდა ემთხვეოდეს :otherს ველს.',
     'size' => [
         'array' => 'The :attribute field must contain :size items.',
         'file' => 'The :attribute field must be :size kilobytes.',
@@ -184,7 +184,8 @@ return [
         'email' => 'მეილი',
         'name' => 'სახელი',
         'username_or_email' => 'სახელი ან მეილი',
-        'password' => 'პაროლი'
+        'password' => 'პაროლი',
+        'password_confirmation' => 'პაროლის გამეორების'
     ],
 
 ];
