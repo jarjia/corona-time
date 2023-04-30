@@ -10,7 +10,7 @@
             <x-input :name="'email'" :type="'email'" :label="__('inputs.email')" :placeholder="__('inputs.email_placeholder')"/>
         </div>
 
-        <button type='submit' class='mt-2 w-full bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
+        <button type='submit' class='mt-2 w-full font-[900] bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
             {{__('forms.reset_password_big')}}
         </button>
         </form>

@@ -29,7 +29,7 @@
                 </div>
             </div>
     </nav>
-    <section class='py-4 px-20 sm:px-0 bg-[#FDFDFD]'>
+    <section class='pt-4 px-20 sm:px-0 bg-[#FDFDFD]'>
         <section class='flex flex-col border-b-[1px] sm:px-4 border-b-[#F6F6F7]'>
             <div class='py-6'>
                 <h2 class='font-[800] text-[25px] sm:text-[20px] leading-[30px]'>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class='w-full'>
             {{$slot}}
         </section>
     </section>

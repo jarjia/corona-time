@@ -1,5 +1,5 @@
 @props(['column', 'name'])
-<th class="p-4 sm:p-1 w-1/4 sm:text-[10px]">
+<th class="py-4 px-3 sm:py-1 sm:px-1 w-1/4 sm:text-[10px]">
     <a href="{{route('dashboard.show',
         [
         'column' => $column, 
