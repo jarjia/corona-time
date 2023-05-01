@@ -22,7 +22,7 @@
                 </div>
             </form>
         </section>
-        <div class="container mt-12 sm:mt-4 rounded-[8px] shadow">
+        <div class="mt-12 sm:mt-4 rounded-[8px] shadow">
             <table class="text-left w-full">
                 <thead class="bg-[#F6F6F7] font-[900] sm:text-[12px] rounded-t-[8px] flex text-black w-full">
                     <tr class="flex w-full">
@@ -32,7 +32,7 @@
                         <x-table-heads :name="'recovered'" :column="'recovered'"/>
                     </tr>
                 </thead>
-                <tbody class="bg-grey-light font-[500] max-h-[420px] sm:text-[11px] flex flex-col scrollbar items-center justify-between overflow-y-scroll w-full">
+                <tbody class="bg-grey-light font-[500] max-h-[603px] sm:text-[11px] flex flex-col scrollbar items-center justify-between overflow-y-scroll w-full">
                     <tr class="flex w-full mb-4">
                         <td class="p-3 sm:p-1 w-1/4 text-black">{{__('dashboard.world_wide')}}</td>
                         <td class="p-3 sm:p-1 w-1/4 text-black">{{ number_format($new_cases, 0, ',', ',') }}</td>

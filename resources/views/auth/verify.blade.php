@@ -1,5 +1,5 @@
 <x-layout-for-confirmations>
-    <div>
+    <div class='text-center'>
         <div class='flex justify-center'>
             <img src="{{ asset('gifs/icons8-checkmark.gif') }}">
         </div>

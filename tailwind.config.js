@@ -10,7 +10,8 @@ module.exports = {
 ],
   theme: {
     screens: {
-      'sm': {'max': '640px'}
+      'sm': {'max': '625px'},
+      'mediumHeight': {'raw': '(max-height: 745px)'}
     },
     fontSize: {
       'primary-font': '16px',

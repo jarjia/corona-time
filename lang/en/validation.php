@@ -134,7 +134,7 @@ return [
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute field must match :other.',
+    'same' => ':attribute does not match to :other.',
     'size' => [
         'array' => 'The :attribute field must contain :size items.',
         'file' => 'The :attribute field must be :size kilobytes.',
@@ -179,6 +179,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password_confirmation' => 'Password confirmation'
+    ],
 
 ];
