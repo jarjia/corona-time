@@ -11,7 +11,7 @@
         <x-input :name="'password'" :type="'password'" :label="__('inputs.password')" :placeholder="__('inputs.password_placeholder')"/>
         <x-input :name="'password_confirmation'" :type="'password'" :label="__('inputs.confirm_password')" :placeholder="__('inputs.confirm_password_placeholder')"/>
 
-        <button type='submit' class='w-full font-[900] bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
+        <button type='submit' class='w-full mt-2 font-[900] bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
             {{__('forms.sign_up')}}
         </button>
         <div class='text-center sm:text-center sm:py-2'>

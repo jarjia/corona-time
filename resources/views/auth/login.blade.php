@@ -15,16 +15,16 @@
                     name="remember_token"
                     id="remember_token"
                 />
-                <label class="font-bold block text-sm sm:text-md text-gray-700"
+                <label class="font-bold block text-sm sm:text-[12px] text-gray-700"
                     for="remember_token"
                 >{{__('inputs.checkbox')}}</label>
             </div>
             <div>
-                <a href="{{route('recover.email')}}" class='text-link sm:text-[14px]'>{{__('forms.forgot_password')}}</a>
+                <a href="{{route('recover.email')}}" class='text-link sm:text-[12px]'>{{__('forms.forgot_password')}}</a>
             </div>
         </div>
 
-        <button type='submit' class='mt-4 font-[900] w-full bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
+        <button type='submit' class='mt-4 sm:mt-2 font-[900] w-full bg-sign-up-btn tracking-wide text-white py-4 rounded-md'>
             {{__('forms.log_in')}}
         </button>
         <div class='text-center sm:text-center sm:py-2'>

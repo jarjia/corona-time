@@ -10,6 +10,6 @@
 @vite('resources/css/app.css')
 @vite('resources/js/app.js')
 
-<body style="font-family: 'Inter', sans-serif;" class='tracking-wide h-screen sm:h-auto'>
+<body style="font-family: 'Inter', sans-serif;" class='tracking-wide h-screen'>
     {{$slot}}
 </body>
