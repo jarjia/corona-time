@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     screens: {
       'sm': {'max': '625px'},
-      'mediumHeight': {'raw': '(max-height: 745px)'}
+      'mediumHeight': {'raw': '(max-height: 745px)'},
+      '2xl': {'min': '1536px'}
     },
     fontSize: {
       'primary-font': '16px',
