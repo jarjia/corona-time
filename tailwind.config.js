@@ -12,7 +12,8 @@ module.exports = {
     screens: {
       'sm': {'max': '625px'},
       'mediumHeight': {'raw': '(max-height: 745px)'},
-      '2xl': {'min': '1536px'}
+      'minHeight': {'raw': '(min-height: 817px)'},
+      '2xl': {'min': '1896px'}
     },
     fontSize: {
       'primary-font': '16px',
