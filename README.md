@@ -178,9 +178,9 @@ it will watch JS files and on change it'll rebuild them, so you don't have to ma
 │   ├─── Console
 │   ├─── Exceptions
 │   ├─── Http
-|   |   ├─── Controllers
-|   |   ├─── Middleware
-|   |   ├─── Requests
+│   │   ├─── Controllers
+│   │   ├─── Middleware
+│   │   ├─── Requests
 │   ├─── Providers
 │   │... Models
 ├─── bootstrap
