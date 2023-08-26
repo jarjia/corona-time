@@ -1,5 +1,5 @@
 <div style="display:flex; align-items: center">
-  <h1 style="position:relative; top: -6px" >Cororna Time</h1>
+  <h1 style="position:relative; top: -6px" >Corona Time</h1>
 </div>
 
 ---
